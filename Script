@@ -1,0 +1,285 @@
+Private Sub Workbook_Open()
+
+ActiveWorkbook.RemovePersonalInformation = 0
+
+Dim is_format As Integer
+is_format = 0
+
+Sheets("Home").Select
+    Range("B1:H1").Select
+    Selection.Copy
+    Sheets("Months").Select
+    ActiveWindow.SmallScroll Down:=66
+    Range("C87:I87").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+
+' Pre April
+If Sheets("Months").Range("AD5") = 1 And Sheets("Months").Range("AB5") = 0 Then
+    Sheets("Home").Select
+    Range("B1:H1").Select
+    Selection.Copy
+    Sheets("Months").Select
+    Range("D5:J5").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("AB5") = 1
+    Range("F2").Select
+    is_format = 1
+    MsgBox "Ïîäâåäåíû èòîãè çà âåñü ïåðèîä äî Àïðåëÿ." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+End If
+
+
+' April
+If Sheets("Months").Range("AD6") = 1 And Sheets("Months").Range("AB6") = 0 Then
+    Range("D6").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-R[-1]C"
+    Range("D6").Select
+    Selection.AutoFill Destination:=Range("D6:J6"), Type:=xlFillDefault
+    Range("D6:J6").Select
+    Range("AB6") = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(6, i) = Cells(6, i)
+    Next
+    
+    is_format = 1
+    
+    MsgBox "Ïîäâåäåíû èòîãè çà Àïðåëü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+End If
+
+
+' May
+If Sheets("Months").Range("AD7") = 1 And Sheets("Months").Range("AB7") = 0 Then
+    Range("D7").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-2]C:R[-1]C)"
+    Range("D7").Select
+    Selection.AutoFill Destination:=Range("D7:J7"), Type:=xlFillDefault
+    Range("D7:J7").Select
+    Range("AB7") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(7, i) = Cells(7, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Ìàé." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+End If
+
+
+' June
+If Sheets("Months").Range("AD8") = 1 And Sheets("Months").Range("AB8") = 0 Then
+    Range("D8").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-3]C:R[-1]C)"
+    Range("D8").Select
+    Selection.AutoFill Destination:=Range("D8:J8"), Type:=xlFillDefault
+    Range("D8:J8").Select
+    Range("AB8") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(8, i) = Cells(8, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Èþíü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+End If
+
+
+' July
+If Sheets("Months").Range("AD9") = 1 And Sheets("Months").Range("AB9") = 0 Then
+    Range("D9").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-4]C:R[-1]C)"
+    Range("D9").Select
+    Selection.AutoFill Destination:=Range("D9:J9"), Type:=xlFillDefault
+    Range("D9:J9").Select
+    Range("AB9") = 1
+    Range("D9:J9").Value = Range("D9:J9").Value
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(9, i) = Cells(9, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Èþëü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+End If
+
+
+' August
+If Sheets("Months").Range("AD10") = 1 And Sheets("Months").Range("AB10") = 0 Then
+    Range("D10").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-5]C:R[-1]C)"
+    Range("D10").Select
+    Selection.AutoFill Destination:=Range("D10:J10"), Type:=xlFillDefault
+    Range("D10:J10").Select
+    Range("AB10") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(10, i) = Cells(10, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Àâãóñò." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+    
+End If
+
+
+' September
+If Sheets("Months").Range("AD11") = 1 And Sheets("Months").Range("AB11") = 0 Then
+    Range("D11").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-6]C:R[-1]C)"
+    Range("D11").Select
+    Selection.AutoFill Destination:=Range("D11:J11"), Type:=xlFillDefault
+    Range("D11:J11").Select
+    Range("AB11") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(11, i) = Cells(11, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Ñåíòÿáðü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+    
+End If
+
+
+' October
+If Sheets("Months").Range("AD12") = 1 And Sheets("Months").Range("AB12") = 0 Then
+    Range("D12").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-8]C:R[-1]C)"
+    Range("D12").Select
+    Selection.AutoFill Destination:=Range("D12:J12"), Type:=xlFillDefault
+    Range("D12:J12").Select
+    Range("AB12") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(12, i) = Cells(12, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Îêòÿáðü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+End If
+
+
+' November
+If Sheets("Months").Range("AD13") = 1 And Sheets("Months").Range("AB13") = 0 Then
+    Range("D13").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-9]C:R[-1]C)"
+    Range("D13").Select
+    Selection.AutoFill Destination:=Range("D13:J13"), Type:=xlFillDefault
+    Range("D13:J13").Select
+    Range("AB13") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(13, i) = Cells(13, i)
+    Next
+    MsgBox "Ïîäâåäåíû èòîãè çà Íîÿáðü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+    
+End If
+
+
+' December
+If Sheets("Months").Range("AD14") = 1 And Sheets("Months").Range("AB14") = 0 Then
+    Range("D14").Select
+    ActiveCell.FormulaR1C1 = "=R87C[-1]-SUM(R[-10]C:R[-1]C)"
+    Range("D14").Select
+    Selection.AutoFill Destination:=Range("D14:J14"), Type:=xlFillDefault
+    Range("D14:J14").Select
+    Range("AB14") = 1
+    is_format = 1
+    
+    For i = 4 To 11 Step 1
+    Cells(14, i) = Cells(14, i)
+    Next
+   
+    MsgBox "Ïîäâåäåíû èòîãè çà Äåêàáðü." & vbNewLine & vbNewLine & _
+    "                                 Óñïåõîâ =)", 64, "Âíèìàíèå!"
+    
+End If
+
+If is_format = 1 Then
+    Range("H5:H14").Select
+    Selection.FormatConditions.AddIconSetCondition
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1)
+        .ReverseOrder = False
+        .ShowIconOnly = False
+        .IconSet = ActiveWorkbook.IconSets(xl3Stars)
+    End With
+    Selection.FormatConditions(1).IconCriteria(1).Icon = xlIconGoldStar
+    With Selection.FormatConditions(1).IconCriteria(2)
+        .Type = xlConditionValueNumber
+        .Value = 0
+        .Operator = 7
+        .Icon = xlIconGoldStar
+    End With
+    With Selection.FormatConditions(1).IconCriteria(3)
+        .Type = xlConditionValueNumber
+        .Value = 0
+        .Operator = 5
+        .Icon = xlIconSilverStar
+    End With
+    
+    Range("I5:I14").Select
+    Selection.FormatConditions.AddIconSetCondition
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1)
+        .ReverseOrder = False
+        .ShowIconOnly = False
+        .IconSet = ActiveWorkbook.IconSets(xl3Flags)
+    End With
+    With Selection.FormatConditions(1).IconCriteria(2)
+        .Type = xlConditionValueNumber
+        .Value = 0
+        .Operator = 7
+    End With
+    With Selection.FormatConditions(1).IconCriteria(3)
+        .Type = xlConditionValueNumber
+        .Value = 0
+        .Operator = 5
+    End With
+    
+    Range("J5:J14").Select
+    Selection.FormatConditions.AddIconSetCondition
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1)
+        .ReverseOrder = False
+        .ShowIconOnly = False
+        .IconSet = ActiveWorkbook.IconSets(xl5Arrows)
+    End With
+    Selection.FormatConditions(1).IconCriteria(1).Icon = xlIconRedDownArrow
+    With Selection.FormatConditions(1).IconCriteria(2)
+        .Type = xlConditionValueNumber
+        .Value = -40
+        .Operator = 7
+        .Icon = xlIconRedDownArrow
+    End With
+    With Selection.FormatConditions(1).IconCriteria(3)
+        .Type = xlConditionValueNumber
+        .Value = -40
+        .Operator = 7
+        .Icon = xlIconRedDownArrow
+    End With
+    With Selection.FormatConditions(1).IconCriteria(4)
+        .Type = xlConditionValueNumber
+        .Value = 0
+        .Operator = 7
+        .Icon = xlIconYellowDash
+    End With
+    With Selection.FormatConditions(1).IconCriteria(5)
+        .Type = xlConditionValueNumber
+        .Value = 0
+        .Operator = 5
+        .Icon = xlIconGreenUpArrow
+    End With
+End If
+
+Range("F2").Select
+Sheets("Home").Select
+Application.CutCopyMode = False
+Range("H2").Select
+End Sub
